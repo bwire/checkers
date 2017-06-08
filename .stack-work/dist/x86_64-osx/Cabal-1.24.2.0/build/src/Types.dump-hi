@@ -1,0 +1,600 @@
+
+==================== FINAL INTERFACE ====================
+2017-06-08 15:26:42.717891 UTC
+
+interface checkers-0.1.0.0-DtpqBHFopUCFce8cBDKjtN:Types 8002
+  interface hash: 40863dcb33ad3a0d6b1ecd2d9e6eeef1
+  ABI hash: 452e258c7bd24a795725e31d10cef906
+  export-list hash: d17dd41bd08d88a34e32e7472e7126b3
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: f6624f22fcdd76ed0ac6625466e2d712
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Types.Board{Types.Board blacks height position whites width}
+  Types.Coords
+  Types.MoveInfo{Types.AttackInfo Types.MoveInfo from piece to victim}
+  Types.MoveType{Types.Attack Types.Move}
+  Types.Part
+  Types.Piece{Types.Checker Types.King}
+  Types.PieceInfo
+  Types.Player
+  Types.Side{Types.Black Types.White}
+module dependencies:
+package dependencies: base-4.9.1.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Either base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
+                         base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+ed763be05cd0ca001cec268f1acf552b
+  $fEqPiece :: GHC.Classes.Eq Types.Piece
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Types.Piece Types.$fEqPiece_$c== Types.$fEqPiece_$c/= -}
+ed763be05cd0ca001cec268f1acf552b
+  $fEqPiece_$c/= :: Types.Piece -> Types.Piece -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Types.Piece) (b :: Types.Piece) ->
+                 case a of wild {
+                   Types.Checker
+                   -> case b of wild1 {
+                        Types.Checker -> GHC.Types.False Types.King -> GHC.Types.True }
+                   Types.King
+                   -> case b of wild1 {
+                        Types.Checker -> GHC.Types.True
+                        Types.King -> GHC.Types.False } }) -}
+ed763be05cd0ca001cec268f1acf552b
+  $fEqPiece_$c== :: Types.Piece -> Types.Piece -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Types.Piece) (ds1 :: Types.Piece) ->
+                 case ds of wild {
+                   Types.Checker
+                   -> case ds1 of wild1 {
+                        Types.Checker -> GHC.Types.True Types.King -> GHC.Types.False }
+                   Types.King
+                   -> case ds1 of wild1 {
+                        Types.Checker -> GHC.Types.False
+                        Types.King -> GHC.Types.True } }) -}
+43c764ebd6a97804af77c5a50901b06f
+  $fEqSide :: GHC.Classes.Eq Types.Side
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Types.Side Types.$fEqSide_$c== Types.$fEqSide_$c/= -}
+43c764ebd6a97804af77c5a50901b06f
+  $fEqSide_$c/= :: Types.Side -> Types.Side -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Types.Side) (b :: Types.Side) ->
+                 case a of wild {
+                   Types.White
+                   -> case b of wild1 {
+                        Types.White -> GHC.Types.False Types.Black -> GHC.Types.True }
+                   Types.Black
+                   -> case b of wild1 {
+                        Types.White -> GHC.Types.True
+                        Types.Black -> GHC.Types.False } }) -}
+43c764ebd6a97804af77c5a50901b06f
+  $fEqSide_$c== :: Types.Side -> Types.Side -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Types.Side) (ds1 :: Types.Side) ->
+                 case ds of wild {
+                   Types.White
+                   -> case ds1 of wild1 {
+                        Types.White -> GHC.Types.True Types.Black -> GHC.Types.False }
+                   Types.Black
+                   -> case ds1 of wild1 {
+                        Types.White -> GHC.Types.False
+                        Types.Black -> GHC.Types.True } }) -}
+856ce3568c815cc4ee48e48b3355e556
+  $fShowMoveInfo :: GHC.Show.Show Types.MoveInfo
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Types.MoveInfo
+                  Types.$fShowMoveInfo_$cshowsPrec
+                  Types.$fShowMoveInfo_$cshow
+                  Types.$fShowMoveInfo_$cshowList -}
+856ce3568c815cc4ee48e48b3355e556
+  $fShowMoveInfo1 :: Types.MoveInfo -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (\ (w :: Types.MoveInfo) (w1 :: GHC.Base.String) ->
+                 Types.$w$cshowsPrec 0# w w1) -}
+856ce3568c815cc4ee48e48b3355e556
+  $fShowMoveInfo_$cshow :: Types.MoveInfo -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Types.MoveInfo) ->
+                 Types.$fShowMoveInfo_$cshowsPrec
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+856ce3568c815cc4ee48e48b3355e556
+  $fShowMoveInfo_$cshowList :: [Types.MoveInfo] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Types.MoveInfo
+                   Types.$fShowMoveInfo1) -}
+856ce3568c815cc4ee48e48b3355e556
+  $fShowMoveInfo_$cshowsPrec ::
+    GHC.Types.Int -> Types.MoveInfo -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: Types.MoveInfo)
+                   (w2 :: GHC.Base.String) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 Types.$w$cshowsPrec ww1 w1 w2 }) -}
+ed763be05cd0ca001cec268f1acf552b
+  $fShowPiece :: GHC.Show.Show Types.Piece
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Types.Piece
+                  Types.$fShowPiece_$cshowsPrec
+                  Types.$fShowPiece_$cshow
+                  Types.$fShowPiece_$cshowList -}
+ed763be05cd0ca001cec268f1acf552b
+  $fShowPiece1 :: Types.Piece -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Types.Piece) (eta :: GHC.Base.String) ->
+                 case ds of wild {
+                   Types.Checker
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Types.$fShowPiece3)
+                        eta
+                   Types.King
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Types.$fShowPiece2)
+                        eta }) -}
+cf9447979955b3ddb18247025a931bf8
+  $fShowPiece2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "King"#) -}
+f7ea3fcb4bf11ef913c272cf3ff6120a
+  $fShowPiece3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Checker"#) -}
+ed763be05cd0ca001cec268f1acf552b
+  $fShowPiece_$cshow :: Types.Piece -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Types.Piece) ->
+                 case x of wild {
+                   Types.Checker -> Types.$fShowPiece3
+                   Types.King -> Types.$fShowPiece2 }) -}
+ed763be05cd0ca001cec268f1acf552b
+  $fShowPiece_$cshowList :: [Types.Piece] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Types.Piece
+                   Types.$fShowPiece1) -}
+ed763be05cd0ca001cec268f1acf552b
+  $fShowPiece_$cshowsPrec ::
+    GHC.Types.Int -> Types.Piece -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (ds :: GHC.Types.Int)
+                   (ds1 :: Types.Piece)
+                   (eta :: GHC.Base.String) ->
+                 case ds1 of wild {
+                   Types.Checker
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Types.$fShowPiece3)
+                        eta
+                   Types.King
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Types.$fShowPiece2)
+                        eta }) -}
+43c764ebd6a97804af77c5a50901b06f
+  $fShowSide :: GHC.Show.Show Types.Side
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Types.Side
+                  Types.$fShowSide_$cshowsPrec
+                  Types.$fShowSide_$cshow
+                  Types.$fShowSide_$cshowList -}
+43c764ebd6a97804af77c5a50901b06f
+  $fShowSide1 :: Types.Side -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Types.Side) (eta :: GHC.Base.String) ->
+                 case ds of wild {
+                   Types.White
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Types.$fShowSide3)
+                        eta
+                   Types.Black
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Types.$fShowSide2)
+                        eta }) -}
+07e1f9dd36ff137ac9251fd473a0c814
+  $fShowSide2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Black"#) -}
+41822bb926dc5f060a2bd9bd3d3d83b1
+  $fShowSide3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "White"#) -}
+43c764ebd6a97804af77c5a50901b06f
+  $fShowSide_$cshow :: Types.Side -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Types.Side) ->
+                 case x of wild {
+                   Types.White -> Types.$fShowSide3
+                   Types.Black -> Types.$fShowSide2 }) -}
+43c764ebd6a97804af77c5a50901b06f
+  $fShowSide_$cshowList :: [Types.Side] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__ @ Types.Side Types.$fShowSide1) -}
+43c764ebd6a97804af77c5a50901b06f
+  $fShowSide_$cshowsPrec ::
+    GHC.Types.Int -> Types.Side -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (ds :: GHC.Types.Int)
+                   (ds1 :: Types.Side)
+                   (eta :: GHC.Base.String) ->
+                 case ds1 of wild {
+                   Types.White
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Types.$fShowSide3)
+                        eta
+                   Types.Black
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b
+                           (c :: GHC.Types.Char -> b -> b)[OneShot]
+                           (n :: b)[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c n Types.$fShowSide2)
+                        eta }) -}
+5889a472834f70156bab7366cfdf83de
+  $tc'Attack :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   5835449010459513958##
+                   8292218708141289619##
+                   Types.$trModule
+                   Types.$tc'Attack1) -}
+0823017b2f1bb70f619516e68aea4339
+  $tc'Attack1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Attack"#) -}
+2c8a8fbe75d0ace5db594d310324a60f
+  $tc'AttackInfo :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11246362606563834099##
+                   3331521780086637358##
+                   Types.$trModule
+                   Types.$tc'AttackInfo1) -}
+55c2924ace999c7057d839864b6422b0
+  $tc'AttackInfo1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'AttackInfo"#) -}
+bcb4e13b904e3256429df7331cea677b
+  $tc'Black :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   137391411164963124##
+                   14163008670986574374##
+                   Types.$trModule
+                   Types.$tc'Black1) -}
+6a74c0521d9629597c3e75c4f36cf5a1
+  $tc'Black1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Black"#) -}
+11bd0b74ae28ac513c23849c9db83771
+  $tc'Board :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   8704938845734129248##
+                   6163268082368259467##
+                   Types.$trModule
+                   Types.$tc'Board1) -}
+e026fec9643880017cd4be344e8906d6
+  $tc'Board1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Board"#) -}
+b5d4a5227c326e375c5cb78d05a25d6f
+  $tc'Checker :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7419473003766480611##
+                   3543312100758097871##
+                   Types.$trModule
+                   Types.$tc'Checker1) -}
+80c5fa6b94822fe3d660660778620c1c
+  $tc'Checker1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Checker"#) -}
+0bbdd321cc1c1dd8a183334cb76e1606
+  $tc'King :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2291836849436122698##
+                   16553683368918845216##
+                   Types.$trModule
+                   Types.$tc'King1) -}
+355aa31652b0327ef0858fa8763b8c17
+  $tc'King1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'King"#) -}
+0ba2c6b6323aa11a279e19a1c1661337
+  $tc'Move :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   10474992061196567187##
+                   11709546023601748946##
+                   Types.$trModule
+                   Types.$tc'Move1) -}
+ab992bd1268cc30281226e49da29bfd3
+  $tc'Move1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Move"#) -}
+3bd2a5c572c4b2edcacdba48a400d42a
+  $tc'MoveInfo :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   15693782951437199386##
+                   10373358514081747226##
+                   Types.$trModule
+                   Types.$tc'MoveInfo1) -}
+d7740d9f82224b4fd398580223c74560
+  $tc'MoveInfo1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'MoveInfo"#) -}
+247a7702bbe9db2d778403c1980b74fa
+  $tc'White :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   757462854784115262##
+                   5629536743897548515##
+                   Types.$trModule
+                   Types.$tc'White1) -}
+44645fd3c4d22d1b1768c99caa41484e
+  $tc'White1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'White"#) -}
+4fc012bedf690f5f2e98347ac98e525b
+  $tcBoard :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   14543220957455411994##
+                   12247292666913853130##
+                   Types.$trModule
+                   Types.$tcBoard1) -}
+09c5bf7c1d1b8517d9c260a47e714d22
+  $tcBoard1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Board"#) -}
+0891f95514f7a352a56fe9fc0efde095
+  $tcMoveInfo :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   16435489431438259673##
+                   12218310059219830748##
+                   Types.$trModule
+                   Types.$tcMoveInfo1) -}
+8926a94dfa496457ddbb280dfdb1930a
+  $tcMoveInfo1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "MoveInfo"#) -}
+5839afe9eaeb7f94d7c21bfde5f78ad4
+  $tcMoveType :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   267163633989451146##
+                   5273352211790930853##
+                   Types.$trModule
+                   Types.$tcMoveType1) -}
+de3e99996a2300e21db1ce5e26c7333f
+  $tcMoveType1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "MoveType"#) -}
+9cb52b3a9ae2f824562ca1eed7703319
+  $tcPiece :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7807737612269277355##
+                   13839579597454050806##
+                   Types.$trModule
+                   Types.$tcPiece1) -}
+5a6feb0555d0fb00839e4663acba3785
+  $tcPiece1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Piece"#) -}
+62000c58937e6cbe87611c27da7eea93
+  $tcSide :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11948727945714127685##
+                   13975255978560451180##
+                   Types.$trModule
+                   Types.$tcSide1) -}
+e9aee994fb630790e7c99fc80908aeb6
+  $tcSide1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Side"#) -}
+66d4fac709520a7c1ad75d95249b30e6
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module Types.$trModule2 Types.$trModule1) -}
+a6d6d171a2bcc6c586c04a43dd7088d4
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Types"#) -}
+842ec36ac23441ad0b0f51bb146b183b
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "checkers-0.1.0.0-DtpqBHFopUCFce8cBDKjtN"#) -}
+856ce3568c815cc4ee48e48b3355e556
+  $w$cshowsPrec ::
+    GHC.Prim.Int#
+    -> Types.MoveInfo -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 3, Strictness: <S,U><S,1*U><L,U>, Inline: [0] -}
+efde68f8142632b2a2a1dcf6616792c6
+  data Board
+    = Board {height :: GHC.Types.Int,
+             width :: GHC.Types.Int,
+             whites :: Types.Part,
+             blacks :: Types.Part,
+             position :: GHC.Types.Int}
+3858879c5822db0efc229133b034a360
+  type Coords = (GHC.Types.Int, GHC.Types.Int)
+856ce3568c815cc4ee48e48b3355e556
+  data MoveInfo
+    = MoveInfo {piece :: Types.Piece,
+                from :: Types.Coords,
+                to :: Types.Coords}
+    | AttackInfo {piece :: Types.Piece,
+                  from :: Types.Coords,
+                  victim :: Types.Coords,
+                  to :: Types.Coords}
+c76836cfa248e798e5bcfa61c14f6605
+  data MoveType = Move | Attack
+a01628b6fac9e31e913badbc99928b4c
+  type Part = [Types.PieceInfo]
+ed763be05cd0ca001cec268f1acf552b
+  data Piece = Checker | King
+49a4996b44e4320c9abd7919825b9349
+  type PieceInfo = (Types.Coords, Types.Piece)
+efe86d2522fca1e8e115995e8ca3f170
+  type Player =
+    Types.MoveType
+    -> Types.Board -> Types.Side -> GHC.Types.IO Types.Board
+43c764ebd6a97804af77c5a50901b06f
+  data Side = White | Black
+b707b2d214ef530ec11f967ef61eb47d
+  blacks :: Types.Board -> Types.Part
+  RecSel Left Types.Board
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLLSL),1*U(A,A,A,1*U,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.Board) ->
+                 case ds of wild { Types.Board ds1 ds2 ds3 ds4 ds5 -> ds4 }) -}
+5d48ca84243687028fdffe057ff1c247
+  from :: Types.MoveInfo -> Types.Coords
+  RecSel Left Types.MoveInfo
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.MoveInfo) ->
+                 case ds of wild {
+                   Types.MoveInfo ds1 ds2 ds3 -> ds2
+                   Types.AttackInfo ds1 ds2 ds3 ds4 -> ds2 }) -}
+3aaeaf2322dfe2f6c03f6e5b97553af9
+  height :: Types.Board -> GHC.Types.Int
+  RecSel Left Types.Board
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(SLLLL),1*U(1*U(U),A,A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.Board) ->
+                 case ds of wild { Types.Board ds1 ds2 ds3 ds4 ds5 -> ds1 }) -}
+c4431623d6ac82e7628a391003afb254
+  piece :: Types.MoveInfo -> Types.Piece
+  RecSel Left Types.MoveInfo
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.MoveInfo) ->
+                 case ds of wild {
+                   Types.MoveInfo ds1 ds2 ds3 -> ds1
+                   Types.AttackInfo ds1 ds2 ds3 ds4 -> ds1 }) -}
+2fec63203121f79d02b3a5d860b3941a
+  position :: Types.Board -> GHC.Types.Int
+  RecSel Left Types.Board
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLLS),1*U(A,A,A,A,1*U(U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.Board) ->
+                 case ds of wild { Types.Board ds1 ds2 ds3 ds4 ds5 -> ds5 }) -}
+46e3473961c6af8ab6f0d6d8a18e36f5
+  to :: Types.MoveInfo -> Types.Coords
+  RecSel Left Types.MoveInfo
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.MoveInfo) ->
+                 case ds of wild {
+                   Types.MoveInfo ds1 ds2 ds3 -> ds3
+                   Types.AttackInfo ds1 ds2 ds3 ds4 -> ds4 }) -}
+ace99ce75f78d67e92d30daa3a1cf227
+  victim :: Types.MoveInfo -> Types.Coords
+  RecSel Left Types.MoveInfo
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.MoveInfo) ->
+                 case ds of wild {
+                   Types.MoveInfo ipv ipv1 ipv2 -> Types.victim1
+                   Types.AttackInfo ds1 ds2 ds3 ds4 -> ds3 }) -}
+11455b543d8c57f09a4b88038ab62cdd
+  victim1 :: Types.Coords
+  {- Strictness: x -}
+d01065c0cb21ac2e733924e02d18089e
+  whites :: Types.Board -> Types.Part
+  RecSel Left Types.Board
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLSLL),1*U(A,A,1*U,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.Board) ->
+                 case ds of wild { Types.Board ds1 ds2 ds3 ds4 ds5 -> ds3 }) -}
+50924b233c7735683bdc5c8fa381eef5
+  width :: Types.Board -> GHC.Types.Int
+  RecSel Left Types.Board
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LSLLL),1*U(A,1*U(U),A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.Board) ->
+                 case ds of wild { Types.Board ds1 ds2 ds3 ds4 ds5 -> ds2 }) -}
+instance [safe] GHC.Classes.Eq [Types.Piece] = Types.$fEqPiece
+instance [safe] GHC.Classes.Eq [Types.Side] = Types.$fEqSide
+instance [safe] GHC.Show.Show [Types.MoveInfo]
+  = Types.$fShowMoveInfo
+instance [safe] GHC.Show.Show [Types.Piece] = Types.$fShowPiece
+instance [safe] GHC.Show.Show [Types.Side] = Types.$fShowSide
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

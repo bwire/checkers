@@ -1,0 +1,93 @@
+
+==================== FINAL INTERFACE ====================
+2017-06-08 15:26:43.700961 UTC
+
+interface checkers-0.1.0.0-DtpqBHFopUCFce8cBDKjtN:Checkers 8002
+  interface hash: 4bff7c6fa918d00275d9a48c7092eaf1
+  ABI hash: cd447f1fe567ad2341414fc200a00e9b
+  export-list hash: 3409d6536d1dde9cf86840d619dc0272
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: f6624f22fcdd76ed0ac6625466e2d712
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Checkers.play
+module dependencies: Board Types
+package dependencies: base-4.9.1.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Either base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
+                         base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:Data.Foldable 3e0b6967a1da89945d0e2d47266337a2
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  base-4.9.1.0:System.IO c9de64c5f5407c4cf1c52500c4d15200
+import  -/  Board 8307e4bc4585a07a5933e9e47d8736ec
+  exports: 155d987a575cadbc364e53bf4c6d9939
+  availableAttacks 5b1bc1b84ac31829a33e08ab85350d69
+  displayBoard 72c028e94c89405eacb8b397a64b30b9
+  otherSide 76c5842fba7463c2c67ac5740844f430
+  pieces 00b064804186d30578733884083b363d
+  upgradeToKings 9e29312eb6a016e02ae0fde9b0dafb38
+import  -/  Types 452e258c7bd24a795725e31d10cef906
+  exports: d17dd41bd08d88a34e32e7472e7126b3
+  Attack 8ebe0066fb0c4700ceaf47c4f751557a
+  Black f045a99f6ff20a06e1712034ee77fd35
+  Board efde68f8142632b2a2a1dcf6616792c6
+  Move 493401907b1f726c14283fba1f1d22fb
+  Player efe86d2522fca1e8e115995e8ca3f170
+  Side 43c764ebd6a97804af77c5a50901b06f
+  White e3a874aacfc9b11d17c4a6e90907cd14
+  position 2fec63203121f79d02b3a5d860b3941a
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+78f89e8735ba46e5477482db2645e555
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Checkers.$trModule2
+                   Checkers.$trModule1) -}
+bcee2f7a2e2db47795c996f18a5cb0df
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Checkers"#) -}
+e56da9937ab31c932e6c94b73ce57eb1
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "checkers-0.1.0.0-DtpqBHFopUCFce8cBDKjtN"#) -}
+0b5b57a5ac19e9f96474fb59f0ff5051
+  play ::
+    Types.Board
+    -> Types.Player -> Types.Player -> GHC.Types.IO GHC.Base.String
+  {- Arity: 4,
+     Strictness: <L,U(U(U),U(U),U,U,U)><L,C(C1(C1(C1(U(U,1*U(U(U),U(U),U,U,U(U)))))))><L,C(C1(C1(C1(U(U,1*U(U(U),U(U),U,U,U(U)))))))><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Checkers.play1
+                  `cast`
+                (<Types.Board>_R
+                 ->_R <Types.Player>_R
+                 ->_R <Types.Player>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R)) -}
+ce83d16258575a135c2d77df8a0e34b5
+  play1 ::
+    Types.Board
+    -> Types.Player
+    -> Types.Player
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.String #)
+  {- Arity: 4,
+     Strictness: <L,U(U(U),U(U),U,U,U)><L,C(C1(C1(C1(U(U,1*U(U(U),U(U),U,U,U(U)))))))><L,C(C1(C1(C1(U(U,1*U(U(U),U(U),U,U,U(U)))))))><S,U> -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

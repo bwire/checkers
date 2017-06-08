@@ -1,0 +1,905 @@
+
+==================== FINAL INTERFACE ====================
+2017-06-08 15:26:43.318337 UTC
+
+interface checkers-0.1.0.0-DtpqBHFopUCFce8cBDKjtN:Board 8002
+  interface hash: 5a4b8b5b6c2f33672d6f5cd8939e8487
+  ABI hash: 8307e4bc4585a07a5933e9e47d8736ec
+  export-list hash: 155d987a575cadbc364e53bf4c6d9939
+  orphan hash: 51f587e5cc0fb43a2a8bd425918ba8c6
+  flag hash: f6624f22fcdd76ed0ac6625466e2d712
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Board.attack
+  Board.availableAttacks
+  Board.availableMoves
+  Board.checkers10x10
+  Board.checkers8x8
+  Board.displayBoard
+  Board.formatCoords
+  Board.move
+  Board.newBoard
+  Board.otherSide
+  Board.pieces
+  Board.upgradeToKings
+module dependencies: Types
+package dependencies: base-4.9.1.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Either base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
+                         base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:Data.Foldable 3e0b6967a1da89945d0e2d47266337a2
+import  -/  base-4.9.1.0:Data.OldList 27987919d8da2f92e3f472ca81f730f8
+import  -/  base-4.9.1.0:Data.Tuple 7dc4bbb45d2e69c991ffac438beeca11
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.List ab8c4e523e6c479c549d3bcd5fc4a439
+import  -/  base-4.9.1.0:GHC.Num 00bfaa7b2f9d6084913c0697a8a49ec8
+import  -/  base-4.9.1.0:GHC.Real 82e4e59051a13dba1da63e1e970a69e6
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  base-4.9.1.0:System.IO c9de64c5f5407c4cf1c52500c4d15200
+import  -/  Types 452e258c7bd24a795725e31d10cef906
+  exports: d17dd41bd08d88a34e32e7472e7126b3
+  AttackInfo 709348798be7de79a663bcf72fc0a6c0
+  Black f045a99f6ff20a06e1712034ee77fd35
+  Board 8db135e6b7ee00540b42b778e308bd2b
+  Board efde68f8142632b2a2a1dcf6616792c6
+  Checker 6c82087954113ddd7d380ff7f2b5d6cb
+  Coords 3858879c5822db0efc229133b034a360
+  King 14dda5e2ddbe758df6368473e9fbd13f
+  MoveInfo d07941d1cda4d5376d8eb07d88200415
+  MoveInfo 856ce3568c815cc4ee48e48b3355e556
+  Part a01628b6fac9e31e913badbc99928b4c
+  Piece ed763be05cd0ca001cec268f1acf552b
+  PieceInfo 49a4996b44e4320c9abd7919825b9349
+  Side 43c764ebd6a97804af77c5a50901b06f
+  White e3a874aacfc9b11d17c4a6e90907cd14
+  blacks b707b2d214ef530ec11f967ef61eb47d
+  from 5d48ca84243687028fdffe057ff1c247
+  height 3aaeaf2322dfe2f6c03f6e5b97553af9
+  piece c4431623d6ac82e7628a391003afb254
+  position 2fec63203121f79d02b3a5d860b3941a
+  to 46e3473961c6af8ab6f0d6d8a18e36f5
+  victim ace99ce75f78d67e92d30daa3a1cf227
+  whites d01065c0cb21ac2e733924e02d18089e
+  width 50924b233c7735683bdc5c8fa381eef5
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+99b53b52e2c763b6eebcd2b28534dfb0
+  $s$fEq(,) :: GHC.Classes.Eq (GHC.Types.Int, GHC.Types.Int)
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (GHC.Types.Int, GHC.Types.Int)
+                  (GHC.Classes.$fEq(,)_$c==
+                     @ GHC.Types.Int
+                     @ GHC.Types.Int
+                     GHC.Classes.$fEqInt
+                     GHC.Classes.$fEqInt)
+                  (GHC.Classes.$fEq(,)_$c/=
+                     @ GHC.Types.Int
+                     @ GHC.Types.Int
+                     GHC.Classes.$fEqInt
+                     GHC.Classes.$fEqInt) -}
+723fdd44a0ebdfe9d4d56388d5d831de
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module Board.$trModule2 Board.$trModule1) -}
+9718ceab22d5d0a285b256b3378c969c
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Board"#) -}
+2c4139ac407e700040101b6e209a628e
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "checkers-0.1.0.0-DtpqBHFopUCFce8cBDKjtN"#) -}
+1c5919fb14e631743323585be91a229c
+  $wattack ::
+    GHC.Types.Int
+    -> GHC.Types.Int
+    -> Types.Part
+    -> Types.Part
+    -> GHC.Types.Int
+    -> Types.Side
+    -> Types.MoveInfo
+    -> (# GHC.Types.Int, GHC.Types.Int, Types.Part, Types.Part,
+          GHC.Types.Int #)
+  {- Arity: 7, Strictness: <L,U><L,U><L,U><L,U><L,U(U)><S,U><S,1*U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Types.Int)
+                   (ww1 :: GHC.Types.Int)
+                   (ww2 :: Types.Part)
+                   (ww3 :: Types.Part)
+                   (ww4 :: GHC.Types.Int)
+                   (w :: Types.Side)
+                   (w1 :: Types.MoveInfo) ->
+                 case w1 of wild {
+                   Types.MoveInfo ipv ipv1 ipv2
+                   -> case Board.attack1
+                      ret_ty (# GHC.Types.Int, GHC.Types.Int, Types.Part, Types.Part,
+                                GHC.Types.Int #)
+                      of {}
+                   Types.AttackInfo piece from victim to
+                   -> case Board.$wreplace
+                             from
+                             piece
+                             to
+                             piece
+                             w
+                             ww
+                             ww1
+                             ww2
+                             ww3
+                             ww4 of ww5 { (#,,,,#) ww6 ww7 ww8 ww9 ww10 ->
+                      let {
+                        side :: Types.Side
+                        = case w of wild1 {
+                            Types.White -> Types.Black Types.Black -> Types.White }
+                      } in
+                      let {
+                        ws :: Types.Part
+                        = case side of wild1 {
+                            Types.White
+                            -> GHC.List.filter
+                                 @ (Types.Coords, Types.Piece)
+                                 (\ (x :: Types.PieceInfo) ->
+                                  case x of wild2 { (,) coords ds ->
+                                  case coords of ww11 { (,) ww12 ww13 ->
+                                  case victim of ww14 { (,) ww15 ww16 ->
+                                  case ww12 of wild3 { GHC.Types.I# x1 ->
+                                  case ww15 of wild4 { GHC.Types.I# y ->
+                                  case GHC.Prim.tagToEnum#
+                                         @ GHC.Types.Bool
+                                         (GHC.Prim.==# x1 y) of wild5 {
+                                    GHC.Types.False -> GHC.Types.True
+                                    GHC.Types.True
+                                    -> case ww13 of wild6 { GHC.Types.I# x2 ->
+                                       case ww16 of wild7 { GHC.Types.I# y1 ->
+                                       case GHC.Prim.tagToEnum#
+                                              @ GHC.Types.Bool
+                                              (GHC.Prim.==# x2 y1) of wild8 {
+                                         GHC.Types.False -> GHC.Types.True
+                                         GHC.Types.True -> GHC.Types.False } } } } } } } } })
+                                 ww8
+                            Types.Black
+                            -> GHC.List.filter
+                                 @ (Types.Coords, Types.Piece)
+                                 (\ (x :: Types.PieceInfo) ->
+                                  case x of wild2 { (,) coords ds ->
+                                  case coords of ww11 { (,) ww12 ww13 ->
+                                  case victim of ww14 { (,) ww15 ww16 ->
+                                  case ww12 of wild3 { GHC.Types.I# x1 ->
+                                  case ww15 of wild4 { GHC.Types.I# y ->
+                                  case GHC.Prim.tagToEnum#
+                                         @ GHC.Types.Bool
+                                         (GHC.Prim.==# x1 y) of wild5 {
+                                    GHC.Types.False -> GHC.Types.True
+                                    GHC.Types.True
+                                    -> case ww13 of wild6 { GHC.Types.I# x2 ->
+                                       case ww16 of wild7 { GHC.Types.I# y1 ->
+                                       case GHC.Prim.tagToEnum#
+                                              @ GHC.Types.Bool
+                                              (GHC.Prim.==# x2 y1) of wild8 {
+                                         GHC.Types.False -> GHC.Types.True
+                                         GHC.Types.True -> GHC.Types.False } } } } } } } } })
+                                 ww9 }
+                      } in
+                      case side of wild1 {
+                        Types.White
+                        -> (# ww6, ww7, ws, ww9,
+                              case ww10 of wild2 { GHC.Types.I# x ->
+                              GHC.Types.I# (GHC.Prim.+# x 1#) } #)
+                        Types.Black
+                        -> (# ww6, ww7, ww8, ws,
+                              case ww10 of wild2 { GHC.Types.I# x ->
+                              GHC.Types.I# (GHC.Prim.+# x 1#) } #) } } }) -}
+abb66779431de90e9091697369973703
+  $wavailableAttacks ::
+    GHC.Types.Int
+    -> GHC.Types.Int
+    -> Types.Part
+    -> Types.Part
+    -> Types.Side
+    -> [Types.MoveInfo]
+  {- Arity: 5, Strictness: <L,U(U)><L,U(U)><L,U><L,U><S,U>,
+     Inline: [0] -}
+2496c2b45497a507c0a426333e4801bd
+  $wavailableMoves ::
+    GHC.Types.Int
+    -> GHC.Types.Int
+    -> Types.Part
+    -> Types.Part
+    -> Types.Side
+    -> [Types.MoveInfo]
+  {- Arity: 5, Strictness: <L,U(U)><L,U(U)><L,U><L,U><S,U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Types.Int)
+                   (ww1 :: GHC.Types.Int)
+                   (ww2 :: Types.Part)
+                   (ww3 :: Types.Part)
+                   (w :: Types.Side) ->
+                 let {
+                   squaresToObstacles :: Types.Coords -> GHC.Types.Bool {- Arity: 1 -}
+                   = \ (w1 :: Types.Coords) -> Board.$wempty ww2 ww3 w1
+                 } in
+                 Board.$wcollectOpportunities
+                   ww
+                   ww1
+                   ww2
+                   ww3
+                   w
+                   (\ (ds :: Types.Piece) (ds1 :: [Types.Coords])[OneShot] ->
+                    case ds of wild {
+                      Types.Checker
+                      -> case ds1 of wild1 {
+                           [] -> GHC.Types.False
+                           : inFront ds2 -> Board.$wempty ww2 ww3 inFront }
+                      Types.King
+                      -> case GHC.List.takeWhile
+                                @ (GHC.Types.Int, GHC.Types.Int)
+                                squaresToObstacles
+                                ds1 of wild1 {
+                           [] -> GHC.Types.False : ds2 ds3 -> GHC.Types.True } })
+                   (\ (ds :: Types.Piece)
+                      (coords :: Types.Coords)[OneShot]
+                      (diagonal :: [Types.Coords])[OneShot] ->
+                    case ds of wild {
+                      Types.Checker
+                      -> GHC.Types.:
+                           @ Types.MoveInfo
+                           (Types.MoveInfo
+                              Types.Checker
+                              coords
+                              (GHC.List.head @ Types.Coords diagonal))
+                           (GHC.Types.[] @ Types.MoveInfo)
+                      Types.King
+                      -> letrec {
+                           go2 :: [(GHC.Types.Int, GHC.Types.Int)] -> [Types.MoveInfo]
+                             {- Arity: 1, Strictness: <S,1*U> -}
+                           = \ (ds1 :: [(GHC.Types.Int, GHC.Types.Int)]) ->
+                             case ds1 of wild1 {
+                               [] -> GHC.Types.[] @ Types.MoveInfo
+                               : y ys
+                               -> case GHC.List.lookup
+                                         @ Types.Coords
+                                         @ Types.Piece
+                                         Board.$s$fEq(,)
+                                         y
+                                         ww2 of wild2 {
+                                    GHC.Base.Nothing
+                                    -> case GHC.List.lookup
+                                              @ Types.Coords
+                                              @ Types.Piece
+                                              Board.$s$fEq(,)
+                                              y
+                                              ww3 of wild3 {
+                                         GHC.Base.Nothing
+                                         -> GHC.Types.:
+                                              @ Types.MoveInfo
+                                              (Types.MoveInfo Types.King coords y)
+                                              (go2 ys)
+                                         GHC.Base.Just ipv -> GHC.Types.[] @ Types.MoveInfo }
+                                    GHC.Base.Just ipv -> GHC.Types.[] @ Types.MoveInfo } }
+                         } in
+                         go2 diagonal })) -}
+2bc60822a9cb6c5c234f9f4fc1970fe9
+  $wcollectOpportunities ::
+    GHC.Types.Int
+    -> GHC.Types.Int
+    -> Types.Part
+    -> Types.Part
+    -> Types.Side
+    -> (Types.Piece -> [Types.Coords] -> GHC.Types.Bool)
+    -> (Types.Piece
+        -> Types.Coords -> [Types.Coords] -> [Types.MoveInfo])
+    -> [Types.MoveInfo]
+  {- Arity: 7, HasNoCafRefs,
+     Strictness: <L,U(U)><L,U(U)><L,1*U><L,1*U><S,U><L,C(C1(U))><L,C(C1(C1(U)))>,
+     Inline: [0] -}
+baef9e9806dafd354e4120af4046ca5a
+  $wempty ::
+    Types.Part -> Types.Part -> Types.Coords -> GHC.Types.Bool
+  {- Arity: 3, HasNoCafRefs, Strictness: <S,1*U><L,1*U><L,U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: Types.Part)
+                   (ww1 :: Types.Part)
+                   (w :: Types.Coords) ->
+                 case GHC.List.lookup
+                        @ Types.Coords
+                        @ Types.Piece
+                        Board.$s$fEq(,)
+                        w
+                        ww of wild {
+                   GHC.Base.Nothing
+                   -> case GHC.List.lookup
+                             @ Types.Coords
+                             @ Types.Piece
+                             Board.$s$fEq(,)
+                             w
+                             ww1 of wild1 {
+                        GHC.Base.Nothing -> GHC.Types.True
+                        GHC.Base.Just ipv -> GHC.Types.False }
+                   GHC.Base.Just ipv -> GHC.Types.False }) -}
+b377d6b4302cc209aa1db5459ead8ee8
+  $wformatCoords ::
+    Types.Board
+    -> GHC.Types.Int
+    -> GHC.Types.Int
+    -> (# GHC.Types.Char, [GHC.Types.Char] #)
+  {- Arity: 3,
+     Strictness: <L,1*U(1*U(U),A,A,A,A)><L,1*U(U)><L,1*U(U)>,
+     Inline: [0],
+     Unfolding: (\ (w :: Types.Board)
+                   (ww :: GHC.Types.Int)
+                   (ww1 :: GHC.Types.Int) ->
+                 (# case ww1 of wild1 { GHC.Types.I# y ->
+                    case GHC.Prim.tagToEnum#
+                           @ GHC.Types.Bool
+                           (GHC.Prim.># 1# y) of wild {
+                      GHC.Types.False
+                      -> letrec {
+                           go2 :: GHC.Prim.Int#
+                                  -> [GHC.Types.Char] -> [(GHC.Types.Int, GHC.Types.Char)]
+                             {- Arity: 2, Strictness: <L,U><S,1*U> -}
+                           = \ (x :: GHC.Prim.Int#) (eta :: [GHC.Types.Char]) ->
+                             case eta of wild2 {
+                               [] -> GHC.Types.[] @ (GHC.Types.Int, GHC.Types.Char)
+                               : y1 ys
+                               -> GHC.Types.:
+                                    @ (GHC.Types.Int, GHC.Types.Char)
+                                    (GHC.Types.I# x, y1)
+                                    (case GHC.Prim.tagToEnum#
+                                            @ GHC.Types.Bool
+                                            (GHC.Prim.==# x y) of wild3 {
+                                       GHC.Types.False -> go2 (GHC.Prim.+# x 1#) ys
+                                       GHC.Types.True
+                                       -> GHC.Types.[] @ (GHC.Types.Int, GHC.Types.Char) }) }
+                         } in
+                         case GHC.List.reverse1
+                                @ (GHC.Types.Int, GHC.Types.Char)
+                                (go2 1# Board.formatCoords2)
+                                (GHC.Types.[] @ (GHC.Types.Int, GHC.Types.Char)) of wild2 {
+                           [] -> case GHC.List.badHead ret_ty GHC.Types.Char of {}
+                           : x ds1 -> case x of wild3 { (,) ds2 y1 -> y1 } }
+                      GHC.Types.True
+                      -> case Board.formatCoords1 of wild2 {
+                           [] -> case GHC.List.badHead ret_ty GHC.Types.Char of {}
+                           : x ds1 -> case x of wild3 { (,) ds2 y1 -> y1 } } } },
+                    case w of wild { Types.Board ds1 ds2 ds3 ds4 ds5 ->
+                    case ds1 of wild1 { GHC.Types.I# x ->
+                    case ww of wild2 { GHC.Types.I# y ->
+                    case GHC.Show.$wshowSignedInt
+                           0#
+                           (GHC.Prim.-# (GHC.Prim.+# x 1#) y)
+                           (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
+                    GHC.Types.: @ GHC.Types.Char ww5 ww6 } } } } #)) -}
+ba187de4d7456d62fc6e6f4ee0951404
+  $wgo ::
+    [(GHC.Types.Int, GHC.Types.Int)]
+    -> GHC.Prim.Int#
+    -> [Types.Piece]
+    -> [((GHC.Types.Int, GHC.Types.Int), Types.Piece)]
+  {- Arity: 3, HasNoCafRefs, Strictness: <S,1*U><L,1*U><L,1*U>,
+     Inline: [0] -}
+1a99067976cf708f825032d14043e3ea
+  $wgo1 ::
+    [(GHC.Types.Int, GHC.Types.Int)]
+    -> GHC.Prim.Int#
+    -> [Types.Piece]
+    -> [((GHC.Types.Int, GHC.Types.Int), Types.Piece)]
+  {- Arity: 3, HasNoCafRefs, Strictness: <S,1*U><L,1*U><L,1*U>,
+     Inline: [0] -}
+bebb02a52f65a9968d801334d9b8b58a
+  $wnewBoard ::
+    GHC.Types.Int
+    -> GHC.Types.Int
+    -> GHC.Types.Int
+    -> (# GHC.Types.Int, GHC.Types.Int, Types.Part, Types.Part,
+          GHC.Types.Int #)
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,U(U)><L,U(U)><L,U(U)>,
+     Inline: [0],
+     Unfolding: (\ (w :: GHC.Types.Int)
+                   (w1 :: GHC.Types.Int)
+                   (w2 :: GHC.Types.Int) ->
+                 let {
+                   coords :: [Types.Coords]
+                   = case w of wild1 { GHC.Types.I# y ->
+                     case GHC.Prim.tagToEnum#
+                            @ GHC.Types.Bool
+                            (GHC.Prim.># 1# y) of wild {
+                       GHC.Types.False
+                       -> case w1 of wild2 { GHC.Types.I# y1 ->
+                          let {
+                            lvl12 :: [GHC.Types.Int] = GHC.Enum.eftInt 1# y1
+                          } in
+                          letrec {
+                            go2 :: GHC.Prim.Int# -> [Types.Coords]
+                              {- Arity: 1, Strictness: <S,U> -}
+                            = \ (x :: GHC.Prim.Int#) ->
+                              let {
+                                z :: [Types.Coords]
+                                = case GHC.Prim.tagToEnum#
+                                         @ GHC.Types.Bool
+                                         (GHC.Prim.==# x y) of wild3 {
+                                    GHC.Types.False -> go2 (GHC.Prim.+# x 1#)
+                                    GHC.Types.True -> GHC.Types.[] @ Types.Coords }
+                              } in
+                              let {
+                                lvl13 :: GHC.Types.Int = GHC.Types.I# x
+                              } in
+                              letrec {
+                                go3 :: [GHC.Types.Int] -> [Types.Coords]
+                                  {- Arity: 1, Strictness: <S,1*U> -}
+                                = \ (ds :: [GHC.Types.Int]) ->
+                                  case ds of wild3 {
+                                    [] -> z
+                                    : y2 ys
+                                    -> case y2 of wild4 { GHC.Types.I# y3 ->
+                                       case GHC.Prim.remInt# (GHC.Prim.+# x y3) 2# of wild5 {
+                                         DEFAULT
+                                         -> GHC.Types.: @ Types.Coords (lvl13, wild4) (go3 ys)
+                                         0# -> go3 ys } } }
+                              } in
+                              go3 lvl12
+                          } in
+                          go2 1# }
+                       GHC.Types.True -> GHC.Types.[] @ Types.Coords } }
+                 } in
+                 (# w, w1,
+                    case w2 of wild1 { GHC.Types.I# y ->
+                    case GHC.Prim.tagToEnum#
+                           @ GHC.Types.Bool
+                           (GHC.Prim.<# 0# y) of wild {
+                      GHC.Types.False
+                      -> GHC.Types.[] @ ((GHC.Types.Int, GHC.Types.Int), Types.Piece)
+                      GHC.Types.True
+                      -> Board.$wgo1
+                           (GHC.List.reverse1
+                              @ Types.Coords
+                              coords
+                              (GHC.Types.[] @ Types.Coords))
+                           y
+                           Board.checkers10x10_xs1 } },
+                    case w2 of wild1 { GHC.Types.I# y ->
+                    case GHC.Prim.tagToEnum#
+                           @ GHC.Types.Bool
+                           (GHC.Prim.<# 0# y) of wild {
+                      GHC.Types.False
+                      -> GHC.Types.[] @ ((GHC.Types.Int, GHC.Types.Int), Types.Piece)
+                      GHC.Types.True -> Board.$wgo coords y Board.checkers10x10_xs } },
+                    Board.checkers10x3 #)) -}
+9b95d324ecfe4e6fa01a145bf3abbc6a
+  $wreplace ::
+    Types.Coords
+    -> Types.Piece
+    -> Types.Coords
+    -> Types.Piece
+    -> Types.Side
+    -> GHC.Types.Int
+    -> GHC.Types.Int
+    -> Types.Part
+    -> Types.Part
+    -> GHC.Types.Int
+    -> (# GHC.Types.Int, GHC.Types.Int, Types.Part, Types.Part,
+          GHC.Types.Int #)
+  {- Arity: 10, HasNoCafRefs,
+     Strictness: <L,U(U(U),U(U))><L,U><L,U><L,U><S,U><L,U><L,U><L,U><L,U><L,1*U(U)>,
+     Inline: [0],
+     Unfolding: (\ (ww :: Types.Coords)
+                   (ww1 :: Types.Piece)
+                   (ww2 :: Types.Coords)
+                   (ww3 :: Types.Piece)
+                   (w :: Types.Side)
+                   (ww4 :: GHC.Types.Int)
+                   (ww5 :: GHC.Types.Int)
+                   (ww6 :: Types.Part)
+                   (ww7 :: Types.Part)
+                   (ww8 :: GHC.Types.Int) ->
+                 let {
+                   ws :: [(Types.Coords, Types.Piece)]
+                   = case w of wild {
+                       Types.White
+                       -> GHC.List.filter
+                            @ (Types.Coords, Types.Piece)
+                            (\ (ds :: (Types.Coords, Types.Piece)) ->
+                             case ds of ww9 { (,) ww10 ww11 ->
+                             case ww10 of ww12 { (,) ww13 ww14 ->
+                             case ww of ww15 { (,) ww16 ww17 ->
+                             case ww13 of wild1 { GHC.Types.I# x ->
+                             case ww16 of wild2 { GHC.Types.I# y ->
+                             case GHC.Prim.tagToEnum#
+                                    @ GHC.Types.Bool
+                                    (GHC.Prim.==# x y) of wild3 {
+                               GHC.Types.False -> GHC.Types.True
+                               GHC.Types.True
+                               -> case ww14 of wild4 { GHC.Types.I# x1 ->
+                                  case ww17 of wild5 { GHC.Types.I# y1 ->
+                                  case GHC.Prim.tagToEnum#
+                                         @ GHC.Types.Bool
+                                         (GHC.Prim.==# x1 y1) of wild6 {
+                                    GHC.Types.False -> GHC.Types.True
+                                    GHC.Types.True
+                                    -> case ww11 of wild7 {
+                                         Types.Checker
+                                         -> case ww1 of wild8 {
+                                              Types.Checker -> GHC.Types.False
+                                              Types.King -> GHC.Types.True }
+                                         Types.King
+                                         -> case ww1 of wild8 {
+                                              Types.Checker -> GHC.Types.True
+                                              Types.King -> GHC.Types.False } } } } } } } } } } })
+                            ww6
+                       Types.Black
+                       -> GHC.List.filter
+                            @ (Types.Coords, Types.Piece)
+                            (\ (ds :: (Types.Coords, Types.Piece)) ->
+                             case ds of ww9 { (,) ww10 ww11 ->
+                             case ww10 of ww12 { (,) ww13 ww14 ->
+                             case ww of ww15 { (,) ww16 ww17 ->
+                             case ww13 of wild1 { GHC.Types.I# x ->
+                             case ww16 of wild2 { GHC.Types.I# y ->
+                             case GHC.Prim.tagToEnum#
+                                    @ GHC.Types.Bool
+                                    (GHC.Prim.==# x y) of wild3 {
+                               GHC.Types.False -> GHC.Types.True
+                               GHC.Types.True
+                               -> case ww14 of wild4 { GHC.Types.I# x1 ->
+                                  case ww17 of wild5 { GHC.Types.I# y1 ->
+                                  case GHC.Prim.tagToEnum#
+                                         @ GHC.Types.Bool
+                                         (GHC.Prim.==# x1 y1) of wild6 {
+                                    GHC.Types.False -> GHC.Types.True
+                                    GHC.Types.True
+                                    -> case ww11 of wild7 {
+                                         Types.Checker
+                                         -> case ww1 of wild8 {
+                                              Types.Checker -> GHC.Types.False
+                                              Types.King -> GHC.Types.True }
+                                         Types.King
+                                         -> case ww1 of wild8 {
+                                              Types.Checker -> GHC.Types.True
+                                              Types.King -> GHC.Types.False } } } } } } } } } } })
+                            ww7 }
+                 } in
+                 case w of wild {
+                   Types.White
+                   -> (# ww4, ww5,
+                         GHC.Types.: @ (Types.Coords, Types.Piece) (ww2, ww3) ws, ww7,
+                         case ww8 of wild1 { GHC.Types.I# x ->
+                         GHC.Types.I# (GHC.Prim.+# x 1#) } #)
+                   Types.Black
+                   -> (# ww4, ww5, ww6,
+                         GHC.Types.: @ (Types.Coords, Types.Piece) (ww2, ww3) ws,
+                         case ww8 of wild1 { GHC.Types.I# x ->
+                         GHC.Types.I# (GHC.Prim.+# x 1#) } #) }) -}
+eb323c687f2617193fc909c1f226f86f
+  $wupgradeToKings ::
+    GHC.Types.Int
+    -> GHC.Types.Int
+    -> Types.Part
+    -> Types.Part
+    -> GHC.Types.Int
+    -> Types.Side
+    -> (# GHC.Types.Int, GHC.Types.Int, Types.Part, Types.Part,
+          GHC.Types.Int #)
+  {- Arity: 6, HasNoCafRefs,
+     Strictness: <L,U(U)><L,U><L,U><L,U><L,U(U)><S,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Types.Int)
+                   (ww1 :: GHC.Types.Int)
+                   (ww2 :: Types.Part)
+                   (ww3 :: Types.Part)
+                   (ww4 :: GHC.Types.Int)
+                   (w :: Types.Side) ->
+                 let {
+                   targetRow :: GHC.Types.Int
+                   = case w of wild {
+                       Types.White -> Board.upgradeToKings1 Types.Black -> ww }
+                 } in
+                 case w of wild {
+                   Types.White
+                   -> case GHC.List.filter
+                             @ (Types.Coords, Types.Piece)
+                             (\ (ds :: (Types.Coords, Types.Piece)) ->
+                              case ds of wild1 { (,) ds1 ds2 ->
+                              case ds1 of wild2 { (,) row ds3 ->
+                              GHC.Classes.eqInt targetRow row } })
+                             ww2 of wild1 {
+                        [] -> (# ww, ww1, ww2, ww3, ww4 #)
+                        : ds ds1
+                        -> case ds of wild2 { (,) coords checker ->
+                           (# ww, ww1,
+                              GHC.Types.:
+                                @ (Types.Coords, Types.Piece)
+                                (coords, Types.King)
+                                (GHC.List.filter
+                                   @ (Types.Coords, Types.Piece)
+                                   (\ (ds2 :: (Types.Coords, Types.Piece)) ->
+                                    case ds2 of ww5 { (,) ww6 ww7 ->
+                                    case ww6 of ww8 { (,) ww9 ww10 ->
+                                    case coords of ww11 { (,) ww12 ww13 ->
+                                    case ww9 of wild3 { GHC.Types.I# x ->
+                                    case ww12 of wild4 { GHC.Types.I# y ->
+                                    case GHC.Prim.tagToEnum#
+                                           @ GHC.Types.Bool
+                                           (GHC.Prim.==# x y) of wild5 {
+                                      GHC.Types.False -> GHC.Types.True
+                                      GHC.Types.True
+                                      -> case ww10 of wild6 { GHC.Types.I# x1 ->
+                                         case ww13 of wild7 { GHC.Types.I# y1 ->
+                                         case GHC.Prim.tagToEnum#
+                                                @ GHC.Types.Bool
+                                                (GHC.Prim.==# x1 y1) of wild8 {
+                                           GHC.Types.False -> GHC.Types.True
+                                           GHC.Types.True
+                                           -> case ww7 of wild9 {
+                                                Types.Checker
+                                                -> case checker of wild10 {
+                                                     Types.Checker -> GHC.Types.False
+                                                     Types.King -> GHC.Types.True }
+                                                Types.King
+                                                -> case checker of wild10 {
+                                                     Types.Checker -> GHC.Types.True
+                                                     Types.King
+                                                     -> GHC.Types.False } } } } } } } } } } })
+                                   ww2),
+                              ww3,
+                              case ww4 of wild3 { GHC.Types.I# x ->
+                              GHC.Types.I# (GHC.Prim.+# x 1#) } #) } }
+                   Types.Black
+                   -> case GHC.List.filter
+                             @ (Types.Coords, Types.Piece)
+                             (\ (ds :: (Types.Coords, Types.Piece)) ->
+                              case ds of wild1 { (,) ds1 ds2 ->
+                              case ds1 of wild2 { (,) row ds3 ->
+                              GHC.Classes.eqInt targetRow row } })
+                             ww3 of wild1 {
+                        [] -> (# ww, ww1, ww2, ww3, ww4 #)
+                        : ds ds1
+                        -> case ds of wild2 { (,) coords checker ->
+                           (# ww, ww1, ww2,
+                              GHC.Types.:
+                                @ (Types.Coords, Types.Piece)
+                                (coords, Types.King)
+                                (GHC.List.filter
+                                   @ (Types.Coords, Types.Piece)
+                                   (\ (ds2 :: (Types.Coords, Types.Piece)) ->
+                                    case ds2 of ww5 { (,) ww6 ww7 ->
+                                    case ww6 of ww8 { (,) ww9 ww10 ->
+                                    case coords of ww11 { (,) ww12 ww13 ->
+                                    case ww9 of wild3 { GHC.Types.I# x ->
+                                    case ww12 of wild4 { GHC.Types.I# y ->
+                                    case GHC.Prim.tagToEnum#
+                                           @ GHC.Types.Bool
+                                           (GHC.Prim.==# x y) of wild5 {
+                                      GHC.Types.False -> GHC.Types.True
+                                      GHC.Types.True
+                                      -> case ww10 of wild6 { GHC.Types.I# x1 ->
+                                         case ww13 of wild7 { GHC.Types.I# y1 ->
+                                         case GHC.Prim.tagToEnum#
+                                                @ GHC.Types.Bool
+                                                (GHC.Prim.==# x1 y1) of wild8 {
+                                           GHC.Types.False -> GHC.Types.True
+                                           GHC.Types.True
+                                           -> case ww7 of wild9 {
+                                                Types.Checker
+                                                -> case checker of wild10 {
+                                                     Types.Checker -> GHC.Types.False
+                                                     Types.King -> GHC.Types.True }
+                                                Types.King
+                                                -> case checker of wild10 {
+                                                     Types.Checker -> GHC.Types.True
+                                                     Types.King
+                                                     -> GHC.Types.False } } } } } } } } } } })
+                                   ww3),
+                              case ww4 of wild3 { GHC.Types.I# x ->
+                              GHC.Types.I# (GHC.Prim.+# x 1#) } #) } } }) -}
+2b190470baee67382222adb60d59abbf
+  attack ::
+    Types.Board -> Types.Side -> Types.MoveInfo -> Types.Board
+  {- Arity: 3, Strictness: <S,U(U,U,U,U,U(U))><S,U><S,1*U>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: Types.Board) (w1 :: Types.Side) (w2 :: Types.MoveInfo) ->
+                 case w of ww { Types.Board ww1 ww2 ww3 ww4 ww5 ->
+                 case Board.$wattack
+                        ww1
+                        ww2
+                        ww3
+                        ww4
+                        ww5
+                        w1
+                        w2 of ww6 { (#,,,,#) ww7 ww8 ww9 ww10 ww11 ->
+                 Types.Board ww7 ww8 ww9 ww10 ww11 } }) -}
+7111b462494501b2e479a53e7b86b123
+  attack1 :: Types.Board
+  {- Strictness: x -}
+5b1bc1b84ac31829a33e08ab85350d69
+  availableAttacks :: Types.Board -> Types.Side -> [Types.MoveInfo]
+  {- Arity: 2, Strictness: <S,U(U(U),U(U),U,U,A)><S,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Types.Board) (w1 :: Types.Side) ->
+                 case w of ww { Types.Board ww1 ww2 ww3 ww4 ww5 ->
+                 Board.$wavailableAttacks ww1 ww2 ww3 ww4 w1 }) -}
+77b61a2b62cbeafdba8d808a9748f321
+  availableMoves :: Types.Board -> Types.Side -> [Types.MoveInfo]
+  {- Arity: 2, Strictness: <S,U(U(U),U(U),U,U,A)><S,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Types.Board) (w1 :: Types.Side) ->
+                 case w of ww { Types.Board ww1 ww2 ww3 ww4 ww5 ->
+                 Board.$wavailableMoves ww1 ww2 ww3 ww4 w1 }) -}
+7b14b779add2dce0b15b7517de432b51
+  checkers10x1 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 20#) -}
+6f20487c4596f8a3583c65b9e24dc6f8
+  checkers10x10 :: Types.Board
+  {- Unfolding: (case Board.$wnewBoard
+                        Board.checkers10x2
+                        Board.checkers10x2
+                        Board.checkers10x1 of ww { (#,,,,#) ww1 ww2 ww3 ww4 ww5 ->
+                 Types.Board ww1 ww2 ww3 ww4 ww5 }) -}
+ff772386321ef340e35005f62c611d35
+  checkers10x10_xs :: [Types.Piece]
+  {- HasNoCafRefs, Strictness: m2 -}
+00ddcf32f36ac9b3b0d21a51ed0d621f
+  checkers10x10_xs1 :: [Types.Piece]
+  {- HasNoCafRefs, Strictness: m2 -}
+ef82010dd53e6486936e352f4c741f55
+  checkers10x2 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 10#) -}
+0ddd27865223248bc21938f27a0d9413
+  checkers10x3 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+c55f460f83792111e40821332c509354
+  checkers8x1 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 12#) -}
+5f08c1eb99a0e210c3f69ed6447025b2
+  checkers8x2 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 8#) -}
+e136b9697daae5ada8051112e592c205
+  checkers8x8 :: Types.Board
+  {- Unfolding: (case Board.$wnewBoard
+                        Board.checkers8x2
+                        Board.checkers8x2
+                        Board.checkers8x1 of ww { (#,,,,#) ww1 ww2 ww3 ww4 ww5 ->
+                 Types.Board ww1 ww2 ww3 ww4 ww5 }) -}
+72c028e94c89405eacb8b397a64b30b9
+  displayBoard :: Types.Board -> GHC.Types.IO ()
+  {- Arity: 2, Strictness: <L,1*U(1*U(U),U(U),1*U,1*U,A)><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Board.displayBoard1
+                  `cast`
+                (<Types.Board>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+da63f2c9378605fe80add0a937ff3fd1
+  displayBoard1 ::
+    Types.Board
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 2, Strictness: <L,1*U(1*U(U),U(U),1*U,1*U,A)><S,U> -}
+a174bfb9cadd47cff2623358b3e95e94
+  formatCoords :: Types.Board -> Types.Coords -> GHC.Base.String
+  {- Arity: 2,
+     Strictness: <L,1*U(1*U(U),A,A,A,A)><S,1*U(1*U(U),1*U(U))>m2,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Types.Board) (w1 :: Types.Coords) ->
+                 case w1 of ww { (,) ww1 ww2 ->
+                 case Board.$wformatCoords w ww1 ww2 of ww3 { (#,#) ww4 ww5 ->
+                 GHC.Types.: @ GHC.Types.Char ww4 ww5 } }) -}
+0f2332d927102735c3b83277aa4ec319
+  formatCoords1 :: [(GHC.Types.Int, GHC.Types.Char)]
+  {- Unfolding: (GHC.List.reverse1
+                   @ (GHC.Types.Int, GHC.Types.Char)
+                   (GHC.Types.[] @ (GHC.Types.Int, GHC.Types.Char))
+                   (GHC.Types.[] @ (GHC.Types.Int, GHC.Types.Char))) -}
+14b3cfdc5393729ca254cf29eb413f80
+  formatCoords2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.Enum.eftChar 65# 1114111#) -}
+08e3cea5b417dad0432eb951378e9bcd
+  move :: Types.Board -> Types.Side -> Types.MoveInfo -> Types.Board
+  {- Arity: 3, Strictness: <S,U(U,U,U,U,U(U))><S,U><S,1*U>m,
+     Unfolding: InlineRule (3, True, False)
+                (\ (board :: Types.Board)
+                   (side :: Types.Side)
+                   (ds :: Types.MoveInfo) ->
+                 case ds of wild {
+                   Types.MoveInfo piece from to
+                   -> Board.replace (from, piece) (to, piece) side board
+                   Types.AttackInfo ipv ipv1 ipv2 ipv3 -> Board.move1 }) -}
+9df940d6b22d7f92f2f4a43a1d6164c8
+  move1 :: Types.Board
+  {- Strictness: x -}
+e36d5c5eb5ca3b80c446c3a40ed3960a
+  newBoard ::
+    GHC.Types.Int -> GHC.Types.Int -> GHC.Types.Int -> Types.Board
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,U(U)><L,U(U)><L,U(U)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: GHC.Types.Int)
+                   (w2 :: GHC.Types.Int) ->
+                 case Board.$wnewBoard
+                        w
+                        w1
+                        w2 of ww { (#,,,,#) ww1 ww2 ww3 ww4 ww5 ->
+                 Types.Board ww1 ww2 ww3 ww4 ww5 }) -}
+76c5842fba7463c2c67ac5740844f430
+  otherSide :: Types.Side -> Types.Side
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Types.Side) ->
+                 case ds of wild {
+                   Types.White -> Types.Black Types.Black -> Types.White }) -}
+00b064804186d30578733884083b363d
+  pieces :: Types.Side -> Types.Board -> Types.Part
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S,1*U><S,1*U(A,A,1*U,1*U,A)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Types.Side) (eta :: Types.Board) ->
+                 case ds of wild {
+                   Types.White -> Types.whites eta
+                   Types.Black -> Types.blacks eta }) -}
+b6d161cd10b456b1c5cd4a73257af7b8
+  replace ::
+    Types.PieceInfo
+    -> Types.PieceInfo -> Types.Side -> Types.Board -> Types.Board
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <S,1*U(U(U(U),U(U)),U)><S,1*U(U,U)><S,U><S,U(U,U,U,U,1*U(U))>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ (w :: Types.PieceInfo)
+                   (w1 :: Types.PieceInfo)
+                   (w2 :: Types.Side)
+                   (w3 :: Types.Board) ->
+                 case w of ww { (,) ww1 ww2 ->
+                 case w1 of ww3 { (,) ww4 ww5 ->
+                 case w3 of ww6 { Types.Board ww7 ww8 ww9 ww10 ww11 ->
+                 case Board.$wreplace
+                        ww1
+                        ww2
+                        ww4
+                        ww5
+                        w2
+                        ww7
+                        ww8
+                        ww9
+                        ww10
+                        ww11 of ww12 { (#,,,,#) ww13 ww14 ww15 ww16 ww17 ->
+                 Types.Board ww13 ww14 ww15 ww16 ww17 } } } }) -}
+9e29312eb6a016e02ae0fde9b0dafb38
+  upgradeToKings :: Types.Board -> Types.Side -> Types.Board
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S,U(U(U),U,U,U,U(U))><S,U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Types.Board) (w1 :: Types.Side) ->
+                 case w of ww { Types.Board ww1 ww2 ww3 ww4 ww5 ->
+                 case Board.$wupgradeToKings
+                        ww1
+                        ww2
+                        ww3
+                        ww4
+                        ww5
+                        w1 of ww6 { (#,,,,#) ww7 ww8 ww9 ww10 ww11 ->
+                 Types.Board ww7 ww8 ww9 ww10 ww11 } }) -}
+159c9f30051c7e1b223eb0989e85aa87
+  upgradeToKings1 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 1#) -}
+"SPEC/Board $fEq(,) @ Int @ Int" [ALWAYS] forall ($dEq1 :: GHC.Classes.Eq
+                                                             GHC.Types.Int)
+                                                 ($dEq :: GHC.Classes.Eq GHC.Types.Int)
+  GHC.Classes.$fEq(,) @ GHC.Types.Int @ GHC.Types.Int $dEq $dEq1
+  = Board.$s$fEq(,)
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
