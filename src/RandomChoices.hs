@@ -21,7 +21,7 @@ randomComputer Move board side =
       let b = move board side v
       
       -- debug information
-      putStrLn $ "Position " ++ show (position b) ++
+      putStrLn $ "Step " ++ show (position b) ++
          ": (" ++ show side ++ " moved " ++ 
          formatCoords board (from v) ++ "-" ++ 
          formatCoords board (to v) ++ ")"
@@ -34,7 +34,11 @@ randomComputer Attack board side = do
   let b = attack board side v
   
   -- debug information
-  putStrLn $ "Position " ++ show (position b) ++ ":" 
+  putStrLn $ "Step " ++ show (position b) ++
+     ": (" ++ show side ++ " attacked " ++ 
+     formatCoords board (from v) ++ "-" ++ 
+     formatCoords board (to v) ++ ", checker at " ++ 
+     formatCoords board (victim v) ++ " removed)" 
   
   return b
  

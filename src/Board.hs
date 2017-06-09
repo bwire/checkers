@@ -198,23 +198,23 @@ remove :: Coords -> Side -> Board -> Board
 remove victim side board = 
   let pcs = pieces side board
       pcs' = filter ((/= victim) . getCoords) pcs
-  in setPieces side board pcs'
+  in setPieces side board pcs' False
 
 -- move checher form one position to another
 replace :: PieceInfo -> PieceInfo -> Side -> Board -> Board
 replace (from, piece) (to, piece') side board = 
   let pcs = pieces side board
       pcs' = (to, piece') : (filter (/= (from, piece)) pcs)
-  in setPieces side board pcs'
+  in setPieces side board pcs' True
 
 -- update part
-setPieces :: Side -> Board -> Part -> Board 
-setPieces White board ws = 
-  let pos = position board + 1
+setPieces :: Side -> Board -> Part -> Bool -> Board 
+setPieces White board ws inc = 
+  let pos = if inc then position board + 1 else position board
   in board { whites = ws, position = pos }
-setPieces Black board bs = 
-  let pos = position board + 1
-  in board { blacks = bs, position = pos }
+setPieces Black board ws inc = 
+  let pos = if inc then position board + 1 else position board
+  in board { blacks = ws, position = pos }
 
 -- checker turns into king. For each side check if there are any checkers at the far row - they become kings   
 upgradeToKings :: Board -> Side -> Board  
