@@ -1,14 +1,14 @@
 module Main where
 
 import Types
-import Board (checkers8x8, checkers10x10)
-import Checkers (play)
+import Checkers (play, selectBoard, selectPlayers)
 import RandomChoices (randomComputer)
 
-getConfig :: IO (Board, Player, Player)
-getConfig = return (checkers8x8, randomComputer, randomComputer)
+import Control.Monad.Trans.Except (runExceptT)
 
 main :: IO String 
 main = do
-  (newBoard, playerA, playerB) <- getConfig
-  play newBoard playerA playerB
+  result <- runExceptT $ selectBoard >>= selectPlayers
+  case result of 
+    Right info -> play (board info) randomComputer randomComputer 
+    Left error -> return error

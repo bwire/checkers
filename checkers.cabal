@@ -18,6 +18,7 @@ library
   exposed-modules:     Types, Board, RandomChoices, Checkers
   build-depends:       base >= 4.7 && < 5
                        , random
+                       , transformers
   default-language:    Haskell2010
 
 executable checkers-exe
@@ -26,6 +27,7 @@ executable checkers-exe
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , checkers
+                     , transformers
   default-language:    Haskell2010
 
 test-suite checkers-test
