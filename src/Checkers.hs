@@ -2,27 +2,28 @@ module Checkers (play, selectBoard, selectPlayers) where
 
 import Control.Monad.Trans.Except
 import Control.Monad.IO.Class (liftIO)
+import RandomChoices (randomComputer)
 import System.Exit
 
 import Types
 import Board (availableAttacks, checkers8x8, checkers10x10, displayBoard, newBoard, otherSide, pieces, upgradeToKings)
+import HumanPlayer (human)
 
-
+-- game process main function
 play :: Board -> Player -> Player -> IO String
 play newBoard playerA playerB = do
   
   putStrLn ""
-  
-   -- debug information
   putStrLn $ "Initial position:" 
   displayBoard newBoard
   
-  -- whires make first move
+  -- whites make first move
   makeMove newBoard White where
+
     makeMove :: Board -> Side -> IO String
     makeMove board side = do
       
-      -- A player playing for 'side' has to attack if he has possibility.
+      -- A player playing for 'side' has to attack if there is any possibility.
       -- Otherwise he can make any move possible.
       let player = getPlayer side
       afterMove <- if canAttack board side 
@@ -57,7 +58,6 @@ play newBoard playerA playerB = do
     isVictory :: Side -> Board -> Bool
     isVictory s b = null (pieces (otherSide s) b) || position b >= 20-- board selection in the beginning
 
-
 -- board selection in the beginning
 selectBoard :: ExceptT String IO GameInfo
 selectBoard = do
@@ -68,13 +68,43 @@ selectBoard = do
     putStrLn "  q - quit"
   val <- liftIO getLine
   case val of
-    "8" -> return $ GameInfo checkers8x8
-    "10" -> return $ GameInfo checkers10x10
+    "8" -> return $ GameInfo checkers8x8 randomComputer randomComputer
+    "10" -> return $ GameInfo checkers10x10 randomComputer randomComputer
     "q" -> throwE "Quit game"
-    _ -> throwE "Incorrect board selection"
+    _ -> do
+      liftIO $ putStrLn "Wrong selection. Try once more.."
+      selectBoard
 
 selectPlayers :: GameInfo -> ExceptT String IO GameInfo
-selectPlayers info = return info
+selectPlayers info = do
+  newInfo <- selectPlayer info White
+  selectPlayer newInfo Black    
+      
+--  Dummy computer bot. One of the available moves or attacks is selected.
+humanPlayer :: MoveType -> Board -> Side -> IO Board
+humanPlayer _ board _ = do
+  putStrLn "God blessed! I won!"
+  return board
+  
+selectPlayer :: GameInfo -> Side -> ExceptT String IO GameInfo
+selectPlayer info side = do
+  liftIO $
+    putStrLn ("Select " ++ show side ++ " player:") >>
+    putStrLn "  c - computer" >>
+    putStrLn "  h - human" >>
+    putStrLn "  q - quit"
+  val <- liftIO getLine
+  case val of
+    "c" -> return info -- no changes
+    "h" -> case side of
+      White -> return $ info { whitePlayer = human }
+      Black -> return $ info { blackPlayer = human }
+    "q" -> throwE "Quit game"
+    _ -> do
+      liftIO $ putStrLn "Wrong selection. Try once more.."
+      selectPlayer info side
+  
+  
 
 
 

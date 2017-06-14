@@ -1,7 +1,7 @@
 module Types where
 
 data Side = White | Black deriving (Show, Eq)
-data GameInfo = GameInfo { board :: Board } | NoGame
+data GameInfo = GameInfo { board :: Board, whitePlayer :: Player, blackPlayer :: Player }
 data MoveType = Move | Attack
 
 -- checker desctiption

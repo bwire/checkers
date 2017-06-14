@@ -10,5 +10,5 @@ main :: IO String
 main = do
   result <- runExceptT $ selectBoard >>= selectPlayers
   case result of 
-    Right info -> play (board info) randomComputer randomComputer 
+    Right info -> play (board info) (whitePlayer info) (blackPlayer info)
     Left error -> return error
