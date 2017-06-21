@@ -11,34 +11,29 @@ getRandom lst = do
   return $ lst !! idx
 
 --  Dummy computer bot. One of the available moves or attacks is selected.
-randomComputer :: MoveType -> Board -> Side -> IO Board
-randomComputer Move board side =
-  case availableMoves board side of
-    [] -> return board
+randomComputer :: MoveType -> GameInfo -> Side -> IO GameInfo
+randomComputer Move info side =
+  case availableMoves (board info) side of
+    [] -> return info
     variants -> do 
-      --TODO DELETE putStrLn $ show (length variants)
       v <- getRandom variants
-      let b = move board side v
+      let b = move (board info) side v
       
-      -- debug information
       putStrLn $ "Step " ++ show (position b) ++
          ": (" ++ show side ++ " moved " ++ 
-         formatCoords board (from v) ++ "-" ++ 
-         formatCoords board (to v) ++ ")"
-      
-      return b
+         formatCoords b (from v) ++ "-" ++ 
+         formatCoords b (to v) ++ ")" 
+      return $ info { board = b }
       
 -- only if the attack ia available
-randomComputer Attack board side = do
-  v <- getRandom (availableAttacks board side)
-  let b = attack board side v
+randomComputer Attack info side = do
+  v <- getRandom (availableAttacks (board info) side)
+  let b = attack (board info) side v
   
-  -- debug information
   putStrLn $ "Step " ++ show (position b) ++
      ": (" ++ show side ++ " attacked " ++ 
-     formatCoords board (from v) ++ "-" ++ 
-     formatCoords board (to v) ++ ", checker at " ++ 
-     formatCoords board (victim v) ++ " removed)" 
-  
-  return b
+     formatCoords b (from v) ++ "-" ++ 
+     formatCoords b (to v) ++ ", checker at " ++ 
+     formatCoords b (victim v) ++ " removed)" 
+  return $ info { board = b }
  

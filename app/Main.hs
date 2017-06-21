@@ -9,6 +9,7 @@ import Control.Monad.Trans.Except (runExceptT)
 main :: IO String 
 main = do
   result <- runExceptT $ selectBoard >>= selectPlayers
-  case result of 
-    Right info -> play (board info) (whitePlayer info) (blackPlayer info)
+  case result of
+    Right Quit -> return "Game finished"
+    Right info -> play info
     Left error -> return error

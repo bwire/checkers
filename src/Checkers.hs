@@ -10,53 +10,53 @@ import Board (availableAttacks, checkers8x8, checkers10x10, displayBoard, newBoa
 import HumanPlayer (human)
 
 -- game process main function
-play :: Board -> Player -> Player -> IO String
-play newBoard playerA playerB = do
-  
+play :: GameInfo -> IO String
+play info = do  
   putStrLn ""
   putStrLn $ "Initial position:" 
-  displayBoard newBoard
+ 
+  displayBoard $ board info
   
   -- whites make first move
-  makeMove newBoard White where
-
-    makeMove :: Board -> Side -> IO String
-    makeMove board side = do
-      
+  makeMove info White where
+  
+    makeMove :: GameInfo -> Side -> IO String
+    makeMove info side = do
       -- A player playing for 'side' has to attack if there is any possibility.
       -- Otherwise he can make any move possible.
       let player = getPlayer side
-      afterMove <- if canAttack board side 
-                   then attackLoop player board side
-                   else player Move board side
+      newInfo <- if canAttack (board info) side 
+                 then attackLoop player info side
+                 else player Move info side
       
-      -- checkers turn into kings agter the move (not while moving)
-      let nextBoard = upgradeToKings afterMove side
-      
-      displayBoard nextBoard
-      if isVictory side nextBoard
-      then return $ "Winner is " ++ show side
-      else makeMove nextBoard (otherSide side)
-    
+      case newInfo of
+        Quit -> return $  show side ++ " quited the game. The winner is " ++ show (otherSide side)
+        _ -> do
+          let nextBoard = upgradeToKings (board newInfo) side -- checkers turn into kings after the move (not while moving)      
+          displayBoard nextBoard
+          if isVictory side nextBoard
+          then return $ "Winner is " ++ show side
+          else makeMove (info { board = nextBoard }) (otherSide side)
+          
     -- If player can attack more than one piece he has to do it.
     -- It's not necessary to make move with the maximum attacking moves
-    attackLoop :: Player -> Board -> Side -> IO Board
-    attackLoop player board side = do
-      board' <- player Attack board side
-      
-      if canAttack board' side
-      then attackLoop player board' side 
-      else return board'
+    attackLoop :: Player -> GameInfo -> Side -> IO GameInfo
+    attackLoop player info side = do
+      info' <- player Attack info side
+      if canAttack (board info') side
+      then attackLoop player info' side 
+      else return info'
     
     getPlayer :: Side -> Player  
-    getPlayer White = playerA
-    getPlayer Black = playerB
+    getPlayer White = whitePlayer info
+    getPlayer Black = blackPlayer info
     
     canAttack :: Board -> Side -> Bool
     canAttack board side = not $ null $ availableAttacks board side  
     
     isVictory :: Side -> Board -> Bool
-    isVictory s b = null (pieces (otherSide s) b) || position b >= 20-- board selection in the beginning
+    isVictory s b = null (pieces (otherSide s) b) 
+      || position b >= 20 -- TODO Remove after debug!!
 
 -- board selection in the beginning
 selectBoard :: ExceptT String IO GameInfo
@@ -70,7 +70,7 @@ selectBoard = do
   case val of
     "8" -> return $ GameInfo checkers8x8 randomComputer randomComputer
     "10" -> return $ GameInfo checkers10x10 randomComputer randomComputer
-    "q" -> throwE "Quit game"
+    "q" -> return Quit
     _ -> do
       liftIO $ putStrLn "Wrong selection. Try once more.."
       selectBoard
@@ -81,6 +81,7 @@ selectPlayers info = do
   selectPlayer newInfo Black    
       
 --  Dummy computer bot. One of the available moves or attacks is selected.
+-- TODO - Process!!!
 humanPlayer :: MoveType -> Board -> Side -> IO Board
 humanPlayer _ board _ = do
   putStrLn "God blessed! I won!"
@@ -99,14 +100,7 @@ selectPlayer info side = do
     "h" -> case side of
       White -> return $ info { whitePlayer = human }
       Black -> return $ info { blackPlayer = human }
-    "q" -> throwE "Quit game"
+    "q" -> return Quit
     _ -> do
       liftIO $ putStrLn "Wrong selection. Try once more.."
       selectPlayer info side
-  
-  
-
-
-
-
-
