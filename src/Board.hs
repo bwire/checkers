@@ -148,8 +148,7 @@ formatCoords :: Board -> Coords -> String
 formatCoords board (x, y) = 
   (\c -> c : show (height board + 1 - x)) 
     . snd 
-    . head 
-    . reverse $ zip [1..y] ['A'..]
+    . last $ zip [1..y] ['A'..]
 
 -- helper to extract Coords from pair
 getCoords :: PieceInfo -> Coords

@@ -30,6 +30,6 @@ data MoveInfo =
   MoveInfo { piece :: Piece, from :: Coords, to :: Coords} | 
   AttackInfo { piece :: Piece, from :: Coords, victim :: Coords, to :: Coords } deriving Show 
 
-data ParseFailure = ForceQuit | WrongMove String
+data ParseFailure = ForceQuit | WrongSelection String | WrongMove String
 
 type Player = MoveType -> GameInfo -> Side -> IO GameInfo

@@ -59,7 +59,7 @@ play info = do
       || position b >= 20 -- TODO Remove after debug!!
 
 -- board selection in the beginning
-selectBoard :: ExceptT String IO GameInfo
+selectBoard :: ExceptT ParseFailure IO GameInfo
 selectBoard = do
   liftIO $ 
     putStrLn "Select board type:" >>
@@ -70,25 +70,17 @@ selectBoard = do
   case val of
     "8" -> return $ GameInfo checkers8x8 randomComputer randomComputer
     "10" -> return $ GameInfo checkers10x10 randomComputer randomComputer
-    "q" -> return Quit
+    "q" -> throwE $ ForceQuit
     _ -> do
       liftIO $ putStrLn "Wrong selection. Try once more.."
       selectBoard
 
-selectPlayers :: GameInfo -> ExceptT String IO GameInfo
-selectPlayers info = do
-  newInfo <- selectPlayer info White
-  selectPlayer newInfo Black    
+selectPlayers :: GameInfo -> ExceptT ParseFailure IO GameInfo
+selectPlayers info = 
+  return info >>= selectPlayer White >>= selectPlayer Black    
       
---  Dummy computer bot. One of the available moves or attacks is selected.
--- TODO - Process!!!
-humanPlayer :: MoveType -> Board -> Side -> IO Board
-humanPlayer _ board _ = do
-  putStrLn "God blessed! I won!"
-  return board
-  
-selectPlayer :: GameInfo -> Side -> ExceptT String IO GameInfo
-selectPlayer info side = do
+selectPlayer :: Side -> GameInfo -> ExceptT ParseFailure IO GameInfo
+selectPlayer side info = do
   liftIO $
     putStrLn ("Select " ++ show side ++ " player:") >>
     putStrLn "  c - computer" >>
@@ -100,7 +92,7 @@ selectPlayer info side = do
     "h" -> case side of
       White -> return $ info { whitePlayer = human }
       Black -> return $ info { blackPlayer = human }
-    "q" -> return Quit
+    "q" -> throwE ForceQuit
     _ -> do
       liftIO $ putStrLn "Wrong selection. Try once more.."
-      selectPlayer info side
+      selectPlayer side info

@@ -1,6 +1,6 @@
 module HumanPlayer (human) where
 
-import Data.Char (toUpper)
+import Data.Char (isAlphaNum, toUpper)
 import Data.List (find)
 import Control.Monad.Trans.Except
 import Control.Monad.IO.Class (liftIO)
@@ -35,7 +35,7 @@ human Move info side =
     parseMove info moves = do
       smove <- liftIO getLine
       -- in case of wrong input just force to repeat (until Quit is demanded)
-      catchE (checkQuit smove >>= parseCoords >>= checkCoords) handler 
+      catchE (checkQuit smove >>= parseInput >>= checkCoords) handler 
       where
         brd = board info
         handler e = case e of
@@ -49,44 +49,48 @@ human Move info side =
                     | otherwise = return s
 
         -- check if parsed coords are withing available list of coords
-        checkCoords :: Coords -> ExceptT ParseFailure IO MoveInfo                
-        checkCoords coords = case find ((==) coords . from) moves of
+        checkCoords :: (Coords, Coords) -> ExceptT ParseFailure IO MoveInfo                
+        checkCoords (fromCoords, toCoords) = case find (\m -> from m == fromCoords && to m == toCoords) moves of
           Just i -> return i
           --Nothing -> throwE $ WrongMove $ "This move isn't available! " ++ (map show moves)
           -- for debug
           Nothing -> do 
+            liftIO . putStrLn $ (show fromCoords ++ "-" ++ show toCoords)
             mapM_ (liftIO . putStrLn . show) moves
             throwE $ WrongMove "This move isn't available! "
-       
-        -- convert string representation into Coords
+        
+        -- the coordinates should be in form A5:C3 - (initial point:destination point)
+        parseInput :: String -> ExceptT ParseFailure IO (Coords, Coords)
+        parseInput input = do
+          let (from, rest) = span (\c -> c /= ' ' && c /= ':') input
+          fromCoords <- parseCoords from
+          toCoords <- parseCoords $ dropWhile (not . isAlphaNum) rest
+          return (fromCoords, toCoords)
+        
         parseCoords :: String -> ExceptT ParseFailure IO Coords
         parseCoords (c:cs) = do
-          x <- getXCoord c
-          y <- getYCoord cs
-          return (x, y) 
+          y <- getYCoord c
+          x <- getXCoord cs
+          return (x, y)
           where
-            getXCoord :: Char -> ExceptT ParseFailure IO Int
-            getXCoord c =
+            -- check Y value to be withing a range
+            getYCoord :: Char -> ExceptT ParseFailure IO Int
+            getYCoord c =
               let ur = toUpper c
                   xletters = take (width brd) ['A'..]
               in case elem ur xletters of
                 True -> return . snd . last $ zip ['A'..ur] [1..]
                 False -> throwE $ WrongMove "Wrong X value. Truy once more"
-            
-            -- check Y value to be withing a range
-            getYCoord :: String -> ExceptT ParseFailure IO Int
-            getYCoord yc = 
+            -- convert string representation into Coords     
+            getXCoord :: String -> ExceptT ParseFailure IO Int
+            getXCoord yc = 
               let y = read yc
-              in case y > 0 && y <= (height brd) of
-                True -> return y
+                  hb = height brd
+              in case y > 0 && y <= hb of
+                True -> return $ hb + 1 - y 
                 False -> throwE $ WrongMove "Wrong Y value. Truy once more"
-              
-        parseCoords [] = throwE $ WrongMove "Wrong cell input format"
-
-
-
-
- 
+        parseCoords _ = throwE $ WrongMove "Wrong input format"
+        
 
 
 -- -- only if the attack ia available

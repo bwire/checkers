@@ -10,6 +10,5 @@ main :: IO String
 main = do
   result <- runExceptT $ selectBoard >>= selectPlayers
   case result of
-    Right Quit -> return "Game finished"
     Right info -> play info
-    Left error -> return error
+    Left ForceQuit -> return "Game finished"
